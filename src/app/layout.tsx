@@ -12,15 +12,29 @@ export const metadata: Metadata = {
   title: "$LARPBALL | Exposing the Larp",
   description: "Exposing the security risks and vulnerabilities of centralized token infrastructure. DYOR.",
   keywords: ["larpball", "solana", "meme coin", "crypto", "security"],
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: "$LARPBALL | Exposing the Larp",
     description: "Exposing the security risks they don't want you to see.",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 1200,
+        alt: "$LARPBALL",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "$LARPBALL | Exposing the Larp",
     description: "Exposing the security risks they don't want you to see.",
+    images: ["/og-image.png"],
   },
 };
 
