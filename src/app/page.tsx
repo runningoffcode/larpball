@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import TokenStats from "@/components/TokenStats";
 
@@ -114,6 +115,9 @@ export default function Home() {
             >
               Join Community
             </a>
+            <Link href="/pfp" className="btn">
+              PFP Generator
+            </Link>
           </motion.div>
 
         </section>
@@ -397,6 +401,12 @@ export default function Home() {
               >
                 Pump.fun
               </a>
+              <Link
+                href="/pfp"
+                className="text-[var(--text-dim)] hover:text-white transition-colors"
+              >
+                PFP Generator
+              </Link>
             </div>
 
             <div className="text-[var(--accent-red)] text-sm mb-6 p-4 border border-[var(--accent-red)]/30 rounded-lg bg-red-900/10">
