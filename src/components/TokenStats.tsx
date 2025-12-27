@@ -94,7 +94,7 @@ export default function TokenStats() {
     {
       label: "24h Volume",
       value: formatNumber(stats.volume24h),
-      change: stats.priceChange24h, // Using price change as proxy
+      // No percentage - DexScreener doesn't provide volume change data
     },
   ];
 
