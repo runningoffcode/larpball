@@ -81,21 +81,9 @@ export default function TokenStats() {
   }
 
   const statItems = [
-    {
-      label: "Price",
-      value: formatPrice(stats.price),
-      change: stats.priceChange24h,
-    },
-    {
-      label: "Market Cap",
-      value: formatNumber(stats.marketCap),
-      change: stats.priceChange24h, // Market cap % = price % (supply is constant)
-    },
-    {
-      label: "24h Volume",
-      value: formatNumber(stats.volume24h),
-      // No percentage - DexScreener doesn't provide volume change data
-    },
+    { label: "Price", value: formatPrice(stats.price) },
+    { label: "Market Cap", value: formatNumber(stats.marketCap) },
+    { label: "24h Volume", value: formatNumber(stats.volume24h) },
   ];
 
   return (
@@ -111,7 +99,7 @@ export default function TokenStats() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5 + i * 0.1 }}
-          className="bg-black/40 backdrop-blur-sm border border-white/20 rounded-lg px-5 py-3 text-center min-w-[120px]"
+          className="bg-black/40 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-2 text-center"
         >
           <p className="text-white/60 text-xs uppercase tracking-wide mb-1">
             {item.label}
@@ -119,16 +107,6 @@ export default function TokenStats() {
           <p className="text-white font-bold text-lg md:text-xl">
             {item.value}
           </p>
-          {item.change !== undefined && (
-            <p
-              className={`text-xs font-medium ${
-                item.change >= 0 ? "text-green-400" : "text-red-400"
-              }`}
-            >
-              {item.change >= 0 ? "+" : ""}
-              {item.change.toFixed(2)}%
-            </p>
-          )}
         </motion.div>
       ))}
     </motion.div>
