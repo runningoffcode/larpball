@@ -25,6 +25,8 @@ export default function PfpGenerator() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingStatus, setProcessingStatus] = useState("");
   const [isDragging, setIsDragging] = useState(false);
+  const [showSaveModal, setShowSaveModal] = useState(false);
+  const [saveImageUrl, setSaveImageUrl] = useState("");
   const dragStart = useRef({ x: 0, y: 0 });
 
   // Load background image on mount
@@ -214,6 +216,42 @@ export default function PfpGenerator() {
     link.click();
   };
 
+  // Save to photos handler - uses Web Share API on mobile for native save
+  const handleSaveToPhotos = async () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    try {
+      // Convert canvas to blob
+      const blob = await new Promise<Blob>((resolve) => {
+        canvas.toBlob((b) => resolve(b!), "image/png");
+      });
+
+      // Create file for sharing
+      const file = new File([blob], "larpball-pfp.png", { type: "image/png" });
+
+      // Check if Web Share API with files is supported
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: "My LARPBALL PFP",
+        });
+      } else {
+        // Fallback: show modal for long-press save
+        const dataUrl = canvas.toDataURL("image/png");
+        setSaveImageUrl(dataUrl);
+        setShowSaveModal(true);
+      }
+    } catch (error) {
+      // User cancelled or error - fallback to modal
+      if ((error as Error).name !== "AbortError") {
+        const dataUrl = canvas.toDataURL("image/png");
+        setSaveImageUrl(dataUrl);
+        setShowSaveModal(true);
+      }
+    }
+  };
+
   // Reset character
   const handleReset = () => {
     setCharacter({
@@ -310,8 +348,11 @@ export default function PfpGenerator() {
             <button onClick={handleReset} className="btn">
               Reset
             </button>
-            <button onClick={handleDownload} className="btn btn-danger">
-              Download PFP
+            <button onClick={handleSaveToPhotos} className="btn btn-danger">
+              Save to Photos
+            </button>
+            <button onClick={handleDownload} className="btn">
+              Download File
             </button>
           </>
         )}
@@ -322,6 +363,29 @@ export default function PfpGenerator() {
         <p>Upload any image - the background will be automatically removed.</p>
         <p className="mt-1">Drag to position, use sliders to resize and rotate.</p>
       </div>
+
+      {/* Save to Photos Modal */}
+      {showSaveModal && (
+        <div
+          className="fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center p-4"
+          onClick={() => setShowSaveModal(false)}
+        >
+          <p className="text-white text-center mb-4 text-lg font-semibold">
+            Long-press the image to save to photos
+          </p>
+          <img
+            src={saveImageUrl}
+            alt="Your LARPBALL PFP"
+            className="max-w-[90vw] max-h-[70vh] rounded-xl"
+          />
+          <button
+            onClick={() => setShowSaveModal(false)}
+            className="btn mt-6"
+          >
+            Close
+          </button>
+        </div>
+      )}
     </div>
   );
 }
