@@ -6,7 +6,8 @@ import { useState } from "react";
 
 const CONTRACT_ADDRESS = "CE5hEYzTBwUP5U2uDcmdfGHJMh7oh7VVPvKNP3Ffpump";
 const PUMP_FUN_URL = `https://pump.fun/coin/${CONTRACT_ADDRESS}`;
-const X_COMMUNITY_URL = "https://x.com/i/communities/2004272048193818885";
+const X_OFFICIAL_URL = "https://x.com/larpball";
+const X_COMMUNITY_URL = "https://x.com/i/communities/2004986732115022144";
 
 const suspiciousWallets = [
   {
@@ -369,12 +370,20 @@ export default function Home() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex justify-center gap-6 mb-6">
               <a
+                href={X_OFFICIAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--text-dim)] hover:text-white transition-colors"
+              >
+                @larpball
+              </a>
+              <a
                 href={X_COMMUNITY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[var(--text-dim)] hover:text-white transition-colors"
               >
-                X / Twitter
+                Community
               </a>
               <a
                 href={PUMP_FUN_URL}
