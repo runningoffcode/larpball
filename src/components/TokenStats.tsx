@@ -89,10 +89,12 @@ export default function TokenStats() {
     {
       label: "Market Cap",
       value: formatNumber(stats.marketCap),
+      change: stats.priceChange24h, // Market cap % = price % (supply is constant)
     },
     {
       label: "24h Volume",
       value: formatNumber(stats.volume24h),
+      change: stats.priceChange24h, // Using price change as proxy
     },
   ];
 
