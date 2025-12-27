@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
+import TokenStats from "@/components/TokenStats";
 
 const CONTRACT_ADDRESS = "CE5hEYzTBwUP5U2uDcmdfGHJMh7oh7VVPvKNP3Ffpump";
 const PUMP_FUN_URL = `https://pump.fun/coin/${CONTRACT_ADDRESS}`;
@@ -79,11 +80,14 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-xl md:text-2xl text-white/80 text-center mb-10 max-w-2xl"
+            className="text-xl md:text-2xl text-white/80 text-center mb-8 max-w-2xl"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.5)" }}
           >
             Exposing the security risks they don&apos;t want you to see
           </motion.p>
+
+          {/* Live Token Stats */}
+          <TokenStats />
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
