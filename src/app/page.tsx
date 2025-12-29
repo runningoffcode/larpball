@@ -118,6 +118,14 @@ export default function Home() {
             <Link href="/pfp" className="btn">
               PFP Generator
             </Link>
+            <a
+              href="https://larptek.larpball.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn"
+            >
+              LarpTek
+            </a>
           </motion.div>
 
         </section>
@@ -407,6 +415,14 @@ export default function Home() {
               >
                 PFP Generator
               </Link>
+              <a
+                href="https://larptek.larpball.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--text-dim)] hover:text-white transition-colors"
+              >
+                LarpTek
+              </a>
             </div>
 
             <div className="text-[var(--accent-red)] text-sm mb-6 p-4 border border-[var(--accent-red)]/30 rounded-lg bg-red-900/10">
