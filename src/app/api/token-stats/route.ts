@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const CONTRACT_ADDRESS = "CE5hEYzTBwUP5U2uDcmdfGHJMh7oh7VVPvKNP3Ffpump";
+const CONTRACT_ADDRESS = "Gd5iJqmFR6AncQHMofBzxvSDmhdutbCSS3f7rLFupump";
 
 export async function GET() {
   try {
