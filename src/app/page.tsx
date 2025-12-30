@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import TokenStats from "@/components/TokenStats";
 
-const CONTRACT_ADDRESS = "CE5hEYzTBwUP5U2uDcmdfGHJMh7oh7VVPvKNP3Ffpump";
+const CONTRACT_ADDRESS = "Gd5iJqmFR6AncQHMofBzxvSDmhdutbCSS3f7rLFupump";
 const PUMP_FUN_URL = `https://pump.fun/coin/${CONTRACT_ADDRESS}`;
 const X_OFFICIAL_URL = "https://x.com/larpball";
 const X_COMMUNITY_URL = "https://x.com/i/communities/2004986732115022144";
